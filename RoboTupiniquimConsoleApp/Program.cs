@@ -7,29 +7,27 @@
         static string sentidoInicial;
         static bool rodarCodigo = true;
         static bool repetirCodigo = false;
-        static string comandos = "";
+        static string comandos = "";                        
         static string stgApontando = "";
         static int posicaoX = 0;
         static int posicaoY = 0;
+        static int apontando = 1;
 
         static void Main(string[] args)
         {
-            while (rodarCodigo)
+            while (rodarCodigo)      //verifica se o código deve ser rodado
             {
                 repetirCodigo = false;
                 Console.Clear();
-
-
-                int apontando = 1;
 
                 ExibirCabecalho();
 
                 ValidacaoCoordenadaInicial();
 
-                if (rodarCodigo == false)
+                if (rodarCodigo == false)       //verifica de o código deve continuar sendo rodado
                     break;
 
-                if (repetirCodigo)
+                if (repetirCodigo)              //verifica se o código deve ser repetido
                     continue;
 
                 DefinirValoresPosXY();
@@ -41,11 +39,11 @@
 
                 ValidarSentidoInicial();
 
-                TestarSentidoInicial(apontando);
+                TestarSentidoInicial();            //Testa qual é o sentido inicial
 
                 ExibirCabecalhoComandos();
 
-                ValidacaoComandos();
+                ValidacaoComandos();                        
 
                 if (repetirCodigo)
                     continue;
@@ -57,9 +55,9 @@
                     matrizComandos[i] = Convert.ToString(comandos[i]);
                 }
 
-                TratandoMatrizComandos(matrizComandos, apontando);
+                TratandoMatrizComandos(matrizComandos);          //Move o robo e muda sua direção.
 
-                DandoNomeApontando(apontando);
+                DandoNomeApontando(apontando);          //Da nome a variavel apontando para poder escreve-la
 
                 Console.WriteLine($"O robô está na localização {posicaoX}:{posicaoY}, virado para o {stgApontando}");
                 Console.ReadLine();
@@ -142,7 +140,7 @@
             }
         }
 
-        static void TestarSentidoInicial(int apontando)
+        static void TestarSentidoInicial()
         {
             if (sentidoInicial == "N")
             {
@@ -200,7 +198,7 @@
             }
         }
 
-        static void TratandoMatrizComandos(string[] matrizComandos, int apontando)
+        static void TratandoMatrizComandos(string[] matrizComandos)
         {
             for (int i = 0; i < comandos.Length; i++)
             {
