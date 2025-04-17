@@ -13,6 +13,41 @@
             Console.WriteLine("----------------------------------------------------");
 
             Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("Qual é a posição atual do robô: ");
+            Console.WriteLine("----------------------------------------------------");
+
+            string coordenadaInicial = Console.ReadLine();
+
+            posicaoX = (Convert.ToInt32(coordenadaInicial[0])) - 48;
+            posicaoY = (Convert.ToInt32(coordenadaInicial[1])) - 48;
+
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("Para onde ele está virado: ");
+            Console.WriteLine("----------------------------------------------------");
+
+            coordenadaInicial = Console.ReadLine();
+            
+            if (coordenadaInicial.ToUpper() == "N")
+            {
+                apontando = 1;
+            }
+
+            else if (coordenadaInicial.ToUpper() == "L")
+            {
+                apontando = 2;
+            }
+
+            else if (coordenadaInicial.ToUpper() == "S")
+            {
+                apontando = 3;
+            }
+
+            else if (coordenadaInicial.ToUpper() == "O")
+            {
+                apontando = 4;
+            }
+
+            Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("Insira os comandos que serão executados: ");
             Console.WriteLine("----------------------------------------------------");
 
@@ -86,8 +121,7 @@
             }
 
             Console.WriteLine($"O robô está na localização {posicaoX}:{posicaoY}, virado para o {stgApontando}");
-    
-                Console.ReadLine();
+            Console.ReadLine();
         }
     }
 }
