@@ -130,12 +130,12 @@
 
                         else if (apontando == 2)
                         {
-                            posicaoY--;
+                            posicaoX++;
                         }
 
                         else if (apontando == 3)
                         {
-                            posicaoX++;
+                            posicaoY--;
                         }
 
                         else if (apontando == 4)
