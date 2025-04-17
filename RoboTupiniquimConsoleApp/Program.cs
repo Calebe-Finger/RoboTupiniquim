@@ -2,7 +2,6 @@
 {
     internal class Program
     {
-
         static string coordenadaInicial;
         static string sentidoInicial;
         static bool rodarCodigo = true;
@@ -55,7 +54,7 @@
                     matrizComandos[i] = Convert.ToString(comandos[i]);
                 }
 
-                TratandoMatrizComandos(matrizComandos);          //Move o robo e muda sua direção.
+                RoboIniciar(matrizComandos);          //Move o robo e muda sua direção.
 
                 DandoNomeApontando(apontando);          //Da nome a variavel apontando para poder escreve-la
 
@@ -198,7 +197,7 @@
             }
         }
 
-        static void TratandoMatrizComandos(string[] matrizComandos)
+        static void RoboIniciar(string[] matrizComandos)
         {
             for (int i = 0; i < comandos.Length; i++)
             {
