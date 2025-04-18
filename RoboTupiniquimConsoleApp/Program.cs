@@ -11,6 +11,7 @@
         static int posicaoX = 0;
         static int posicaoY = 0;
         static int apontando = 1;
+        static string tamanhoTerreno = "";
 
         static void Main(string[] args)
         {
@@ -20,6 +21,8 @@
                 Console.Clear();
 
                 ExibirCabecalho();
+
+                ValidacaoTamanhoTerreno();
 
                 ValidacaoCoordenadaInicial();
 
@@ -77,21 +80,41 @@
             Console.WriteLine("----------------------------------------------------");
 
             Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("Qual é a posição atual do robô: ");
+            Console.WriteLine("Qual é o tamanho do terreno a ser explorado: ");
             Console.WriteLine("S - Para Sair: ");
             Console.WriteLine("----------------------------------------------------");
 
+            tamanhoTerreno = Console.ReadLine();
+
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("Qual é a posição atual do robô: ");
+            Console.WriteLine("----------------------------------------------------");
+
             coordenadaInicial = Console.ReadLine();
+        }
+
+        static void ValidacaoTamanhoTerreno()
+        {
+            if (tamanhoTerreno == "S")
+                rodarCodigo = false;
+
+            if (tamanhoTerreno.Length == 1)
+            {
+                tamanhoTerreno += tamanhoTerreno;
+            }
+
+            else if (tamanhoTerreno.Length > 2)
+            {
+                Console.WriteLine("Por favor insira apenas dois numeros referentes a coordenada inicial: ");
+                repetirCodigo = true;
+            }
         }
 
         static void ValidacaoCoordenadaInicial()
         {
             coordenadaInicial = coordenadaInicial.ToUpper();
 
-            if (coordenadaInicial == "S")
-                rodarCodigo = false;
-
-            else if (coordenadaInicial.Length > 2 || coordenadaInicial.Length == 1)
+            if (coordenadaInicial.Length > 2 || coordenadaInicial.Length == 1)
             {
                 Console.WriteLine("Por favor insira apenas dois numeros referentes a coordenada inicial: ");
                 repetirCodigo = true;
@@ -203,29 +226,24 @@
             {
                 if (matrizComandos[i] == "M")
                 {
-                    if (apontando == 1)
+                    if (apontando == 1 && posicaoY < tamanhoTerreno[1])
                     {
                         posicaoY++;
                     }
 
-                    else if (apontando == 2)
+                    else if (apontando == 2 && posicaoX < tamanhoTerreno[0])
                     {
                         posicaoX++;
                     }
 
-                    else if (apontando == 3)
+                    else if (apontando == 3 && posicaoY > 0)
                     {
                         posicaoY--;
                     }
 
-                    else if (apontando == 4)
+                    else if (apontando == 4 && posicaoX > 0)
                     {
                         posicaoX--;
-                    }
-
-                    else
-                    {
-                        Console.WriteLine("Temos um problema na variável apontando...");
                     }
                 }
 
